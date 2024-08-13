@@ -33,7 +33,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)  # set to select the first row, otherwise, select the cell by default
         self.message = QMessageBox()
         self.resetServos_ = False
-        self.path = '/home/pi/mse112-ws/MasterPi/'
+        self.path = '/home/pi/mse112-ws-student/MasterPi/'
         self.actdir = self.path + "ActionGroups/"
         self.button_controlaction_clicked('reflash')
         ########################main window###############################
