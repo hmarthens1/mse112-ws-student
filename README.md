@@ -2,7 +2,7 @@
 git clone under the /home/pi directory the repo:
 
 ```
-git clone https://github.com/hmarthens1/mse112-ws.git
+git clone https://github.com/hmarthens1/mse112-ws.git](https://github.com/hmarthens1/mse112-ws-student.git
 
 ```
 
@@ -71,39 +71,6 @@ cd ~/mse112-ws/MasterPi_PC_Software
 ```
 python Arm.py
 ```
-
-
-<!--# yolov8 packages
-
-```
-sudo pip install opencv-python
-```
-
-```
-sudo pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
-````
-
-```
-sudo pip install ultralytics
-```
-
-```
-sudo pip install cvzone
-```
-
-# example for yolov8
-
-run the cam.py file
-
-```
-cd ~/mse112-ws/yolov8
-```
-
-```
-python cam.py
-```
-
--->
 
 
 
