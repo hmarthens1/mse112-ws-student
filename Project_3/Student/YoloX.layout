@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Release" />
+	<File name="yoloX.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14348" topLine="311" />
+		</Cursor>
+		<Folding>
+			<Collapse line="45" />
+			<Collapse line="62" />
+			<Collapse line="121" />
+			<Collapse line="164" />
+			<Collapse line="184" />
+			<Collapse line="208" />
+			<Collapse line="233" />
+			<Collapse line="269" />
+			<Collapse line="377" />
+		</Folding>
+	</File>
+</CodeBlocks_layout_file>
