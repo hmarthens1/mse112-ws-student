@@ -1,7 +1,3 @@
-After OS setup and installation, run the command below first:
-```
-sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
-```
 
 git clone under the /home/pi directory the repo:
 
