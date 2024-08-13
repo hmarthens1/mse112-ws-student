@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append('/home/pi/mse112-ws/MasterPi/')
+sys.path.append('/home/pi/mse112-ws-student/MasterPi/')
 import time
 import HiwonderSDK.Board
 from smbus2 import SMBus, i2c_msg

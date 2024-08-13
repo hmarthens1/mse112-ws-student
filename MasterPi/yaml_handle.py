@@ -1,6 +1,6 @@
 import yaml
-lab_file_path = '/home/pi/mse112-ws/MasterPi/lab_config.yaml'
-Deviation_file_path = '/home/pi/mse112-ws/MasterPi/Deviation.yaml'
+lab_file_path = '/home/pi/mse112-ws-student/MasterPi/lab_config.yaml'
+Deviation_file_path = '/home/pi/mse112-ws-student/MasterPi/Deviation.yaml'
 
 def get_yaml_data(yaml_file):
     file = open(yaml_file, 'r', encoding='utf-8')

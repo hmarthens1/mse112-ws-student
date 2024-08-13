@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # encoding:utf-8
 import sys
-sys.path.append('/home/pi/mse112-ws/MasterPi/')
+sys.path.append('/home/pi/mse112-ws-student/MasterPi/')
 import cv2
 import time
 import threading

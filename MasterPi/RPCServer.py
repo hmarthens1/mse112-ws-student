@@ -2,7 +2,7 @@
 # coding=utf8
 import os
 import sys
-sys.path.append('/home/pi/mse112-ws/MasterPi/')
+sys.path.append('/home/pi/mse112-ws-student/MasterPi/')
 import time
 import logging
 import threading

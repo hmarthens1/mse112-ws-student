@@ -5,7 +5,7 @@ import sys
 import time
 import threading
 import sqlite3 as sql
-sys.path.append('/home/pi/mse112-ws/MasterPi/')
+sys.path.append('/home/pi/mse112-ws-student/MasterPi/')
 import yaml_handle
 import HiwonderSDK.Board as Board
 
@@ -29,7 +29,7 @@ def runAction(actNum):
     global online_action_times
     if actNum is None:
         return
-    actNum = "/home/pi/mse112-ws/MasterPi/ActionGroups/" + actNum + ".d6a"
+    actNum = "/home/pi/mse112-ws-student/MasterPi/ActionGroups/" + actNum + ".d6a"
     stopRunning = False
     if os.path.exists(actNum) is True:
         if runningAction is False:

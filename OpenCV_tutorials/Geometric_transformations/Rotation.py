@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('/home/pi/mse112-ws/OpenCV_tutorials/Geometric_transformations/sfu.png')
+img = cv2.imread('/home/pi/mse112-ws-student/OpenCV_tutorials/Geometric_transformations/sfu.png')
 rows, cols, ch = img.shape
 # rotate the image counterclockwise by 45 degrees, and zoom out the original image by factor 0.5
 M = cv2.getRotationMatrix2D((cols/ 2.0,rows/2.0), 45,0.5)

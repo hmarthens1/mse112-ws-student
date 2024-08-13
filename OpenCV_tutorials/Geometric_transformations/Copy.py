@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('/home/pi/mse112-ws/OpenCV_tutorials/Geometric_transformations/sfu.png')
+img = cv2.imread('/home/pi/mse112-ws-student/OpenCV_tutorials/Geometric_transformations/sfu.png')
 rows, cols, ch = img.shape
 
 # mapx and mapy separately set the x and y axis coorinate
