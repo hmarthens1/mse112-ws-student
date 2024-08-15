@@ -8,10 +8,10 @@ square_length = 3
 calibration_size = (7, 7)
 
 #Collect the calibration image storage path
-save_path = '/home/pi/mse112-ws/MasterPi/CameraCalibration/calibration_images/'
+save_path = '/home/pi/mse112-ws-student/MasterPi/CameraCalibration/calibration_images/'
 
 #Calibration parameter storage path
-calibration_param_path = '/home/pi/mse112-ws/MasterPi/CameraCalibration/calibration_param'
+calibration_param_path = '/home/pi/mse112-ws-student/MasterPi/CameraCalibration/calibration_param'
 
 #Mapping parameter storage path
-map_param_path = '/home/pi/mse112-ws/MasterPi/CameraCalibration/map_param'
+map_param_path = '/home/pi/mse112-ws-student/MasterPi/CameraCalibration/map_param'
