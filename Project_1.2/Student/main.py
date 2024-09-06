@@ -16,7 +16,6 @@ import HiwonderSDK.Sonar as Sonar
 import HiwonderSDK.Misc as Misc
 import HiwonderSDK.Board as Board
 from HiwonderSDK.PID import PID
-import pandas as pd
 
 
 # initialization
@@ -24,7 +23,7 @@ AK = ArmIK()
 pitch_pid = PID(P=0.28, I=0.16, D=0.18)
 
 HWSONAR = Sonar.Sonar()
-distance = 0 
+distance = 999
 
 range_rgb = {
     'red': (0, 0, 255),
@@ -37,7 +36,7 @@ img_centerx = 320
 # Variable for distance obstacle avoidance
 distance_data = []
 stopMotor = False
-Threshold = 10  # Set threshold for obstacle distance
+Threshold = 15  # Set threshold for obstacle distance
 
 
 # line tracking
@@ -67,7 +66,7 @@ def servo_init():
 
     Board.setPWMServoPulse(1, 2500, 300) # Set the pulse width of Servo 1 to 2500 and the running time to 1000 milliseconds
     time.sleep(0.5)
-    Board.setPWMServoPulse(3, 1000, 500) 
+    Board.setPWMServoPulse(3, 800, 500) 
     time.sleep(0.5)
     Board.setPWMServoPulse(4, 2000, 500) 
     time.sleep(0.5)
@@ -185,26 +184,39 @@ def getAreaMaxContour(contours):
 
 
 
-def move():
-    #coordinates for pick and place
-
-
+def move():   
     global line_centerx
     global obstacle
+    global distance
 
     i = 0
+    
     while True:
-
-        # TODO 1.0 Set the pick and place coordinates appropriately, you will need to fine tune these
-        # The "globals()['distance']" gives us access the the global variable 'distance' value
-
-        coordinate = {
-        'place':   (-18, 2, 2),
-        'pick': (0, globals()['distance']+2.5, 2),  # Adjusting y-coordinate based on the distance
-    }
-        
-
         if __isRunning:
+
+            # code for stopping
+            if distance <= Threshold:
+                MotorStop()
+                stopMotor = True
+                obstacle = True
+
+                print("Distance to obstacle:\n")
+                print(distance)
+                print("Reached obstacle!\n")
+                time.sleep(0.5)
+            else:
+                obstacle = False
+                stopMotor = False
+            time.sleep(0.03)
+
+            # TODO 1.0 Set the pick and place coordinates appropriately, you will need to fine tune these
+            # The "globals()['distance']" gives us access the the global variable 'distance' value
+            coordinate = {
+            'place':   (-18, globals()['distance'], 1),
+            'pick': (0, globals()['distance'], 1),  # Adjusting y-coordinate based on the distance
+            }   
+
+            # line tracking algorithm
             if line_centerx != -1 and not obstacle:
                 
                 num = (line_centerx - img_centerx)
@@ -227,7 +239,7 @@ def move():
 
                 if obstacle:
 
-                    time.sleep(0.01)
+                    time.sleep(10)
                     # Pick
                     print("Pick and Place Start\n")
 
@@ -243,6 +255,7 @@ def move():
                     # Pick
                     # /.....enter code here...../
 
+                    # AK.setPitchRangeMoving((coordinate['pick']), -90, -90, 90, 500)  # Pick from the corresponding coordinate
                     time.sleep(0.5)
 
                     Board.setPWMServoPulse(1, 1200, 500) # Close paw
@@ -252,7 +265,6 @@ def move():
                     AK.setPitchRangeMoving((0, 6, 18), -90, -90, 90, 1500)
                     time.sleep(1.5)
 
-
                     # TODO 2 Inverse Kinematic to Place Obstacle, use AK.setPitchRangeMoving()
 
                     # Place
@@ -261,12 +273,8 @@ def move():
                     time.sleep(1)
 
                     Board.setPWMServoPulse(1, 2500, 1000) # Open claws
-
-                    
                     time.sleep(1)
-                    initMove()
-
-                    
+                    initMove()   
                     obstacle = False
                     print("Pick and Place end\n")
                     time.sleep(1)
@@ -276,6 +284,22 @@ def move():
         else:
             time.sleep(0.01)
  
+# distance measuring function
+def measure_distance():
+    global distance_data
+    global obstacle
+    global distance
+    global __isRunning
+
+    # Ultrasonic sensor measurements
+    dist = HWSONAR.getDistance() / 10.0
+    distance_data.append(dist)
+
+   # find average distance, use 5 values
+    if len(distance_data) > 5:
+        distance_data=[]
+    distance = np.mean(distance_data)  
+
 
 
 # Run child thread
@@ -285,49 +309,14 @@ th.start()
 # th.join()
 
 
-
+# image processing function used to calculate line center
 
 def run(img):
     global line_centerx
     global __target_color
-
     global __isRunning
     global stopMotor
-    global distance_data
-    global obstacle
-    global distance
-
-
-    # Ultrasonic sensor measurements
-    dist = HWSONAR.getDistance() / 10.0
-
-    if __isRunning:
-        
-        distance_data.append(dist)
-
-        if len(distance_data) > 5:
-            distance_data.pop(0)
-
-        distance = np.mean(distance_data)
-
-        if distance <= Threshold:
-            MotorStop()
-            stopMotor = True
-            obstacle = True
-
-            print("Distance to obstacle:\n")
-            print(distance)
-            print("Reached obstacle!\n")
-            time.sleep(0.5)
-        else:
-            obstacle = False
-            stopMotor = False
-        time.sleep(0.03)
-
-
     
-
-    # Camera line tracking
     
     img_copy = img.copy()
     img_h, img_w = img.shape[:2]
@@ -401,11 +390,18 @@ if __name__ == '__main__':
     
     signal.signal(signal.SIGINT, Stop)
     cap = cv2.VideoCapture(-1)
-    __target_color = ('blue',)
+    __target_color = ('blue','red')
     while __isRunning:
+
+        # call function for distance measurement
+        measure_distance()
+
+        # read from camera
         ret, img = cap.read()
         if ret:
             frame = img.copy()
+
+            # feed frame into image processing function "run"
             Frame = run(frame)  
             frame_resize = cv2.resize(Frame, (320, 240))
             cv2.imshow('frame', frame_resize)

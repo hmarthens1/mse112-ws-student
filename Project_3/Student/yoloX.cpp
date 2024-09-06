@@ -417,8 +417,8 @@ int main(int argc, char** argv) {
     // TODO change the model param to use Yolo Nano model
 
     // Load YOLOX models
-    yolox.load_param("yoloxT.param");
-    yolox.load_model("yoloxT.bin");
+    yolox.load_param("yoloxN.param");
+    yolox.load_model("yoloxN.bin");
 
     // Create named pipe (FIFO)
     const char* pipe_path = "/tmp/yolox_pipe";
