@@ -104,7 +104,7 @@ If the RGB lights flash, the setup is successful.
 
 ## Overclocking
 
-- **Video Demo:** [Watch Demo](https://1sfu-my.sharepoint.com/:v:/g/personal/mnariman_sfu_ca/EXVSrKCz_8lFioCxkZRBGs8BvZU0JVhMVvBFuD1F56JryQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=C65Pw5)
+- **Video Demo:** [Watch Demo](https://1sfu-my.sharepoint.com/:v:/g/personal/mnariman_sfu_ca/EZ6od1MdtalCsMwj6mtSio4Bn7HUVKsEB7UdbWpazfJ8sA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=OXlowU)
 - **References:** [Read More](https://qengineering.eu/overclocking-the-raspberry-pi-4.html)
 
 ## OpenCV Installation Using Script
