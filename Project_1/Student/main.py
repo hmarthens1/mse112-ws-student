@@ -350,7 +350,7 @@ if __name__ == '__main__':
     
     signal.signal(signal.SIGINT, Stop)
     cap = cv2.VideoCapture(-1)
-    __target_color = ('blue',)
+    __target_color = ('green',)
     while __isRunning:
         ret, img = cap.read()
         if ret:
