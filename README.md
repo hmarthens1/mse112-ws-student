@@ -11,7 +11,7 @@
 - Basic Linux Commands
 
 ### Lab Files:
-- **Lab Presentation:** [View PPT](https://1sfu-my.sharepoint.com/:p:/g/personal/mnariman_sfu_ca/ER7Ka5JNgEJEoHxdtXBOtIEBoXrseEaAk7MyCYmsVwL05w?e=tSZa9A)
+- **Lab Presentation:** [View PPT](https://1sfu-my.sharepoint.com/:p:/g/personal/mnariman_sfu_ca/IQCCv3BE-FphQa8tpLUnQaPnAeHe5cOi7cFGOajV1km1cqw?e=QRD74C)
 
 ### Additional Resources:
 - **Lab Files:** [Download Files](https://1sfu-my.sharepoint.com/:f:/g/personal/mhakizim_sfu_ca/EsqILDf2CF9Nkj5EvpWbk68BhWfN5ra50C7CpnQFA_7zrA?e=DYATYx)
