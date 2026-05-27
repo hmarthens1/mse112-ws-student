@@ -5,7 +5,7 @@ import sys
 import time
 import threading
 import sqlite3 as sql
-sys.path.append('/home/pi/mse112-ws-student/MasterPi/')
+sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi'))
 import yaml_handle
 import HiwonderSDK.Board as Board
 

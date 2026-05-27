@@ -5,7 +5,7 @@ import subprocess
 import os
 import signal
 
-sys.path.append('/home/pi/mse112-ws-student/MasterPi/')
+sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi'))
 import yaml_handle
 from ArmIK.Transform import *
 from ArmIK.ArmMoveIK import *

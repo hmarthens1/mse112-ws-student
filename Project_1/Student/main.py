@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 # coding=utf8
 import sys
-sys.path.append('/home/pi/mse112-ws-student/MasterPi//')
+import os
+sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi'))
 import cv2
 import time
 import math

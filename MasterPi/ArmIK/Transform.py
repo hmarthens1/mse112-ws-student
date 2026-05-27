@@ -2,7 +2,8 @@
 # encoding:utf-8
 import cv2
 import sys
-sys.path.append('/home/pi/mse112-ws-student/MasterPi/')
+import os
+sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi'))
 import math
 import numpy as np
 from CameraCalibration.CalibrationConfig import *

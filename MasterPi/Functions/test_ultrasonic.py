@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 #coding=utf8
 import sys
-sys.path.append('/home/pi/mse112-ws/MasterPi/')
+import os
+sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws', 'MasterPi'))
 import time
 import signal
 import numpy as np
