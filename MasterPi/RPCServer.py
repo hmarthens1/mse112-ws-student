@@ -2,7 +2,7 @@
 # coding=utf8
 import os
 import sys
-sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi'))
+sys.path.append(os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws-student', 'MasterPi'))
 import time
 import logging
 import threading

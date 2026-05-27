@@ -5,7 +5,7 @@ import time
 import threading
 import sqlite3 as sql
 from SetPWMServo import *
-sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi'))
+sys.path.append(os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws-student', 'MasterPi'))
 import yaml_handle
 
 runningAction = False

@@ -3,7 +3,7 @@
 import cv2
 import sys
 import os
-sys.path.append(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi'))
+sys.path.append(os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws-student', 'MasterPi'))
 import math
 import numpy as np
 from CameraCalibration.CalibrationConfig import *
