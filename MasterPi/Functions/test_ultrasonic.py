@@ -2,11 +2,9 @@
 #coding=utf8
 import sys
 import os
-sys.path.append(os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws', 'MasterPi'))
+sys.path.append(os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws-student', 'MasterPi'))
 import time
 import signal
-import numpy as np
-import pandas as pd
 import HiwonderSDK.Sonar as Sonar
 import HiwonderSDK.Board as Board
 from ArmIK.Transform import *
