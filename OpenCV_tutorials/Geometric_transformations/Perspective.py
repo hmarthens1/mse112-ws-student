@@ -1,7 +1,8 @@
+import os
 import cv2
 import numpy as np
 
-img=cv2.imread('/home/pi/mse112-ws-student/OpenCV_tutorials/Geometric_transformations/sfu.png')
+img=cv2.imread(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'OpenCV_tutorials', 'Geometric_transformations', 'sfu.png'))
 rows, cols = img.shape[:2]
 print(rows,cols)
 

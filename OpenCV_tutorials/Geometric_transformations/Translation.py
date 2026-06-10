@@ -1,7 +1,8 @@
+import os
 import numpy as np
 import cv2
 
-src = cv2.imread('/home/pi/mse112-ws-student/OpenCV_tutorials/Geometric_transformations/sfu.png')
+src = cv2.imread(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'OpenCV_tutorials', 'Geometric_transformations', 'sfu.png'))
 rows, cols, ch = src.shape
 
 # Matrix with translation in x; x - 300; and translation in y; y + 50

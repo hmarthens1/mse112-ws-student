@@ -29,7 +29,7 @@ def runAction(actNum):
     global online_action_times
     if actNum is None:
         return
-    actNum = "/home/pi/mse112-ws-student/MasterPi/ActionGroups/" + actNum + ".d6a"
+    actNum = os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws-student', 'MasterPi', 'ActionGroups', actNum + '.d6a')
     stopRunning = False
     if os.path.exists(actNum) is True:
         if runningAction is False:

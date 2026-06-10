@@ -1,7 +1,8 @@
-﻿import numpy as np
+﻿import os
+import numpy as np
 import cv2 as cv
 
-src = cv.imread('/home/pi/mse112-ws-student/OpenCV_tutorials/Geometric_transformations/sfu.png')
+src = cv.imread(os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'OpenCV_tutorials', 'Geometric_transformations', 'sfu.png'))
 # method  output the dimension directly
 height, width = src.shape[:2]  # acquire the original dimension
 

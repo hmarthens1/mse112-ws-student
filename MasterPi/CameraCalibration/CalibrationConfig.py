@@ -1,3 +1,7 @@
+import os
+
+_base = os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi', 'CameraCalibration')
+
 #The actual distance between two adjacent corner points, in cm
 corners_length = 2.1
 
@@ -8,10 +12,10 @@ square_length = 3
 calibration_size = (7, 7)
 
 #Collect the calibration image storage path
-save_path = '/home/pi/mse112-ws-student/MasterPi/CameraCalibration/calibration_images/'
+save_path = os.path.join(_base, 'calibration_images') + '/'
 
 #Calibration parameter storage path
-calibration_param_path = '/home/pi/mse112-ws-student/MasterPi/CameraCalibration/calibration_param'
+calibration_param_path = os.path.join(_base, 'calibration_param')
 
 #Mapping parameter storage path
-map_param_path = '/home/pi/mse112-ws-student/MasterPi/CameraCalibration/map_param'
+map_param_path = os.path.join(_base, 'map_param')

@@ -379,6 +379,14 @@ def restBusServoPulse(oldid):
     serial_serro_wirte_cmd(oldid, LOBOT_SERVO_MOVE_TIME_WRITE, 500, 100)    # Middle position
 
 ##power off
+def unloadPWMServo(servo_id):
+    if servo_id < 1 or servo_id > 6:
+        raise AttributeError("Invalid Servo ID: %d" % servo_id)
+    reg = __SERVO_ADDR + (servo_id - 1)
+    with SMBus(__i2c) as bus:
+        msg = i2c_msg.write(__i2c_addr, [reg, 0])
+        bus.i2c_rdwr(msg)
+        
 def unloadBusServo(id):
     serial_serro_wirte_cmd(id, LOBOT_SERVO_LOAD_OR_UNLOAD_WRITE, 0)
 
