@@ -1,6 +1,5 @@
 import os
-
-_base = os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi', 'CameraCalibration')
+_base = os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws-student', 'MasterPi','CameraCalibration')
 
 #The actual distance between two adjacent corner points, in cm
 corners_length = 2.1

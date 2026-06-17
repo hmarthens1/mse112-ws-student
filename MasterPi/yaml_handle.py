@@ -1,7 +1,6 @@
 import yaml
 import os
-import sys
-_base = os.path.join(os.path.expanduser('~'), 'mse112-ws-student', 'MasterPi')
+_base = os.path.join(os.path.expanduser('~' + os.environ.get('SUDO_USER', '')), 'mse112-ws-student', 'MasterPi')
 lab_file_path = os.path.join(_base, 'lab_config.yaml')
 Deviation_file_path = os.path.join(_base, 'Deviation.yaml')
 
