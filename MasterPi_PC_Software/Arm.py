@@ -43,6 +43,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         
         self.validator1 = QIntValidator(500, 2500)
         self.lineEdit_1.setValidator(self.validator1)
+        self.lineEdit_2.setValidator(self.validator1)
         self.lineEdit_3.setValidator(self.validator1)
         self.lineEdit_4.setValidator(self.validator1)
         self.lineEdit_5.setValidator(self.validator1)
@@ -50,12 +51,14 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
 
         # The slider is to control the value in corresponding text box and bind the corresponding servo ratation to valuechange function
         self.horizontalSlider_1.valueChanged.connect(lambda: self.valuechange1('id1'))
+        self.horizontalSlider_2.valueChanged.connect(lambda: self.valuechange1('id2'))
         self.horizontalSlider_3.valueChanged.connect(lambda: self.valuechange1('id3'))
         self.horizontalSlider_4.valueChanged.connect(lambda: self.valuechange1('id4'))
         self.horizontalSlider_5.valueChanged.connect(lambda: self.valuechange1('id5'))
         self.horizontalSlider_6.valueChanged.connect(lambda: self.valuechange1('id6'))
         
         self.horizontalSlider_11.valueChanged.connect(lambda: self.valuechange2('d1'))
+        self.horizontalSlider_12.valueChanged.connect(lambda: self.valuechange2('d2'))
         self.horizontalSlider_13.valueChanged.connect(lambda: self.valuechange2('d3'))
         self.horizontalSlider_14.valueChanged.connect(lambda: self.valuechange2('d4'))
         self.horizontalSlider_15.valueChanged.connect(lambda: self.valuechange2('d5'))
@@ -294,6 +297,11 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 servoAngle1 = self.horizontalSlider_1.value()
                 self.lineEdit_1.setText(str(servoAngle1))
                 PWM.setPWMServoPulse(1, servoAngle1 + self.deviation_data[str(1)], 20)
+            if name == 'id2':
+                print("ID2")
+                servoAngle2 = self.horizontalSlider_2.value()
+                self.lineEdit_2.setText(str(servoAngle2))
+                PWM.setPWMServoPulse(2, servoAngle2 + self.deviation_data[str(2)], 20)
             if name == 'id3':
                 print("ID3")
                 servoAngle3 = self.horizontalSlider_3.value()
@@ -320,23 +328,28 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 self.devNew[0] = self.horizontalSlider_11.value()
                 self.label_d1.setText(str(self.devNew[0]))
                 PWM.setPWMServoPulse(1, self.horizontalSlider_1.value() + self.devNew[0], 20)
+
+            if name == 'd2':
+                self.devNew[1] = self.horizontalSlider_12.value()
+                self.label_d2.setText(str(self.devNew[1]))
+                PWM.setPWMServoPulse(2, self.horizontalSlider_2.value() + self.devNew[1], 20)
             if name == 'd3':
-                self.devNew[1] = self.horizontalSlider_13.value()
-                self.label_d3.setText(str(self.devNew[1]))
-                PWM.setPWMServoPulse(3, self.horizontalSlider_3.value() + self.devNew[1], 20)
+                self.devNew[2] = self.horizontalSlider_13.value()
+                self.label_d3.setText(str(self.devNew[2]))
+                PWM.setPWMServoPulse(3, self.horizontalSlider_3.value() + self.devNew[2], 20)
             if name == 'd4':
-                self.devNew[2] = self.horizontalSlider_14.value()
-                self.label_d4.setText(str(self.devNew[2]))
-                PWM.setPWMServoPulse(4, self.horizontalSlider_4.value() + self.devNew[2], 20)       
+                self.devNew[3] = self.horizontalSlider_14.value()
+                self.label_d4.setText(str(self.devNew[3]))
+                PWM.setPWMServoPulse(4, self.horizontalSlider_4.value() + self.devNew[3], 20)       
             if name == 'd5':
-                self.devNew[3] = self.horizontalSlider_15.value()
-                self.label_d5.setText(str(self.devNew[3]))
-                PWM.setPWMServoPulse(5, self.horizontalSlider_5.value() + self.devNew[3], 20)
+                self.devNew[4] = self.horizontalSlider_15.value()
+                self.label_d5.setText(str(self.devNew[4]))
+                PWM.setPWMServoPulse(5, self.horizontalSlider_5.value() + self.devNew[4], 20)
                            
             if name == 'd6':
-                self.devNew[4] = self.horizontalSlider_16.value()
-                self.label_d6.setText(str(self.devNew[4]))
-                PWM.setPWMServoPulse(6, self.horizontalSlider_6.value() + self.devNew[4], 20)      
+                self.devNew[5] = self.horizontalSlider_16.value()
+                self.label_d6.setText(str(self.devNew[5]))
+                PWM.setPWMServoPulse(6, self.horizontalSlider_6.value() + self.devNew[5], 20)      
 
     # reset button clicking event
     def button_re_clicked(self, name):
@@ -388,14 +401,15 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         return data
     
     # add a function of a row of data to tableWidget 
-    def add_line(self, item, timer, id1, id3, id4, id5, id6):
+    def add_line(self, item, timer, id1, id2, id3, id4, id5, id6):
         self.tableWidget.setItem(item, 1, QtWidgets.QTableWidgetItem(str(item + 1)))
         self.tableWidget.setItem(item, 2, QtWidgets.QTableWidgetItem(timer))
         self.tableWidget.setItem(item, 3, QtWidgets.QTableWidgetItem(id1))
-        self.tableWidget.setItem(item, 4, QtWidgets.QTableWidgetItem(id3))
-        self.tableWidget.setItem(item, 5, QtWidgets.QTableWidgetItem(id4))
-        self.tableWidget.setItem(item, 6, QtWidgets.QTableWidgetItem(id5))
-        self.tableWidget.setItem(item, 7, QtWidgets.QTableWidgetItem(id6))
+        self.tableWidget.setItem(item, 4, QtWidgets.QTableWidgetItem(id2))
+        self.tableWidget.setItem(item, 5, QtWidgets.QTableWidgetItem(id3))
+        self.tableWidget.setItem(item, 6, QtWidgets.QTableWidgetItem(id4))
+        self.tableWidget.setItem(item, 7, QtWidgets.QTableWidgetItem(id5))
+        self.tableWidget.setItem(item, 8, QtWidgets.QTableWidgetItem(id6))
 
     #  add a running icon button in the located row
     def icon_position(self):
@@ -772,16 +786,19 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 try:
                     self.deviation_data = self.get_yaml_data(self.path + self.Deviation_file)
                     deviation1 = self.deviation_data['1']
+                    deviation2 = self.deviation_data['2']
                     deviation3 = self.deviation_data['3']
                     deviation4 = self.deviation_data['4']
                     deviation5 = self.deviation_data['5']
                     deviation6 = self.deviation_data['6']
                     self.label_d1.setText(str(deviation1))
+                    self.label_d2.setText(str(deviation2))
                     self.label_d3.setText(str(deviation3))
                     self.label_d4.setText(str(deviation4))
                     self.label_d5.setText(str(deviation5))
                     self.label_d6.setText(str(deviation6))
                     self.horizontalSlider_11.setValue(deviation1)
+                    self.horizontalSlider_12.setValue(deviation2)
                     self.horizontalSlider_13.setValue(deviation3)
                     self.horizontalSlider_14.setValue(deviation4)
                     self.horizontalSlider_15.setValue(deviation5)
@@ -811,6 +828,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
             if name == 'saveDeviation':
                 try:
                     data = {'1': self.horizontalSlider_11.value(),
+                            '2': self.horizontalSlider_12.value(),
                             '3': self.horizontalSlider_13.value(),
                             '4': self.horizontalSlider_14.value(),
                             '5': self.horizontalSlider_15.value(),
