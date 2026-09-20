@@ -1,0 +1,22 @@
+# MSE 112 - Python dependencies for the course workspace
+#
+# Install on the Pi with:
+#   cd /home/pi/mse112-ws-student
+#   sudo pip install -r requirements.txt
+#
+# NOT listed here, installed separately:
+#   opencv (cv2) - built from source, see Lab 01 Part 11.2
+#   PyQt5        - installed with apt: sudo apt-get install python3-pyqt5.qtsql
+
+pyyaml          # config and calibration files (HiwonderSDK)
+rpi_ws281x      # RGB LEDs on the expansion board
+RPi.GPIO        # GPIO pins
+smbus2          # I2C sensors
+# numpy MUST stay on 1.x. OpenCV is compiled against the system numpy 1.x
+# headers (Part 11.2); numpy 2.x changed the C API, so cv2 would fail to import
+# with "numpy.core.multiarray failed to import". matplotlib and pandas both work
+# fine on 1.26.
+numpy<2         # arrays, used throughout
+matplotlib      # plotting in the OpenCV tutorials (Labs 04-05)
+pandas          # Project 1 and MasterPi/Functions/Avoidance.py
+json-rpc        # provides the "jsonrpc" module used by MasterPi/RPCServer.py
