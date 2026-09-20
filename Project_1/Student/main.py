@@ -18,7 +18,7 @@ import HiwonderSDK.Misc as Misc
 import HiwonderSDK.Board as Board
 import HiwonderSDK.mecanum as mecanum
 from HiwonderSDK.PID import PID
-import pandas as pd
+# import pandas as pd   # not used
 
 
 # initialization

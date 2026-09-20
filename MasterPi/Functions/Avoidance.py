@@ -8,7 +8,7 @@ import time
 import signal
 import Camera
 import numpy as np
-import pandas as pd
+# import pandas as pd   # not used - outlier filter below uses numpy
 import HiwonderSDK.Sonar as Sonar
 import HiwonderSDK.Board as Board
 from ArmIK.Transform import *
@@ -136,13 +136,19 @@ def run(img):
     dist = HWSONAR.getDistance() / 10.0
 
     distance_data.append(dist)
-    data = pd.DataFrame(distance_data)
-    data_ = data.copy()
-    u = data_.mean()  # Calculate the mean
-    std = data_.std()  # Calculate standard deviation
 
-    data_c = data[np.abs(data - u) <= std]
-    distance = data_c.mean()[0]
+    # Reject sonar outliers: keep only readings within one standard deviation
+    # of the mean, then average those. This used a pandas DataFrame; numpy does
+    # the same job on what is at most five values, so pandas is not needed.
+    # pandas' std() uses ddof=1 (sample stddev), so match that exactly.
+    arr = np.array(distance_data, dtype=float)
+    if arr.size < 2:
+        distance = float('nan')   # standard deviation is undefined for one reading
+    else:
+        u = arr.mean()                    # Calculate the mean
+        std = arr.std(ddof=1)             # Calculate standard deviation
+        kept = arr[np.abs(arr - u) <= std]
+        distance = kept.mean() if kept.size else float('nan')
 
     if len(distance_data) == 5:
         distance_data.remove(distance_data[0])

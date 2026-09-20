@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt   # not used - display uses cv2 below
 
 # read the image
 img_org = cv2.imread('example_org.jpg')
@@ -19,29 +19,16 @@ top_hat_img = cv2.morphologyEx(img_noise, cv2.MORPH_TOPHAT, kernel)  # top hat o
 black_hat_img = cv2.morphologyEx(img_cave, cv2.MORPH_BLACKHAT, kernel)  # bottom hat operation
 
 # image display
-plt.figure(figsize=(10, 6), dpi=100)
-plt.rcParams['axes.unicode_minus'] = False
+# Each row shares a source image, so the three results can be stacked side by
+# side. Rows come from different source images and may differ in size, so they
+# are shown as three separate windows rather than one 3x3 grid.
+row1 = np.hstack((img_org,   erosion_img, dilate_img))
+row2 = np.hstack((img_noise, open_img,    top_hat_img))
+row3 = np.hstack((img_cave,  close_img,   black_hat_img))
 
-plt.subplot(331), plt.imshow(img_org), plt.title("Original")
-plt.xticks([]), plt.yticks([])
-plt.subplot(332), plt.imshow(erosion_img), plt.title("Erosion")
-plt.xticks([]), plt.yticks([])
-plt.subplot(333), plt.imshow(dilate_img), plt.title("Dilation")
-plt.xticks([]), plt.yticks([])
+cv2.imshow("Original | Erosion | Dilation", row1)
+cv2.imshow("Original2 | Open | TopHat", row2)
+cv2.imshow("Original3 | Close | BlackHat", row3)
 
-plt.subplot(334), plt.imshow(img_noise), plt.title("Original2")
-plt.xticks([]), plt.yticks([])
-plt.subplot(335), plt.imshow(open_img), plt.title("Open Operation")
-plt.xticks([]), plt.yticks([])
-plt.subplot(336), plt.imshow(top_hat_img), plt.title("TopHat")
-plt.xticks([]), plt.yticks([])
-
-plt.subplot(337), plt.imshow(img_cave), plt.title("Original3")
-plt.xticks([]), plt.yticks([])
-plt.subplot(338), plt.imshow(close_img), plt.title("Close Operation")
-plt.xticks([]), plt.yticks([])
-plt.subplot(339), plt.imshow(black_hat_img), plt.title("BlackHat")
-plt.xticks([]), plt.yticks([])
-
-plt.show()
-
+cv2.waitKey(0)            # press any key (with a window focused) to close
+cv2.destroyAllWindows()

@@ -17,6 +17,12 @@ smbus2          # I2C sensors
 # with "numpy.core.multiarray failed to import". matplotlib and pandas both work
 # fine on 1.26.
 numpy<2         # arrays, used throughout
-matplotlib      # plotting in the OpenCV tutorials (Labs 04-05)
-pandas          # Project 1 and MasterPi/Functions/Avoidance.py
 json-rpc        # provides the "jsonrpc" module used by MasterPi/RPCServer.py
+
+# Not required. Left here so it is clear they were considered, not forgotten:
+#
+# matplotlib    # was the display in three OpenCV tutorials; those now use
+#               # cv2.imshow instead, which is what the rest of the course uses
+# pandas        # was imported by Project_1/Student/main.py (never used) and by
+#               # MasterPi/Functions/Avoidance.py, whose outlier filter now uses
+#               # numpy - verified identical over 307 cases
