@@ -43,7 +43,6 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         
         self.validator1 = QIntValidator(500, 2500)
         self.lineEdit_1.setValidator(self.validator1)
-        self.lineEdit_2.setValidator(self.validator1)
         self.lineEdit_3.setValidator(self.validator1)
         self.lineEdit_4.setValidator(self.validator1)
         self.lineEdit_5.setValidator(self.validator1)
